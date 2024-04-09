@@ -151,7 +151,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "author": "Mehul Saini",
   "license": "ISC"

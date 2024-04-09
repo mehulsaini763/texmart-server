@@ -10,9 +10,7 @@ app.use(cors());
 
 app.get("/products", async (req, res) => {
   const products = await getProduct();
-  res.json({
-    products: products,
-  });
+  res.json({ products: products });
 });
 
 app.listen(process.env.PORT, () => {
