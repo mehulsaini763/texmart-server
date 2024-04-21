@@ -1,11 +1,16 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
+import { connectDB } from "./db/connection.js";
+import { app } from "./app.js";
 
-app.use(cors());
+import dotenv from 'dotenv'
+dotenv.config('./.env')
 
-app.get("/", (req, res) => res.json({ message: "Express on Vercel" }));
+const PORT = process.env.PORT || 8000;
 
-app.listen(5000, () => console.log("Server ready on port 3000."));
-
-module.exports = app;
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
+  })
+  .catch((err) => {
+    console.log("MongoDB Connection Failed");
+    process.exit(1);
+  });
